@@ -10,18 +10,44 @@
 </head>
 <body>
 
-    <h1>Edit Task</h1>
-    <form action="{{ route('task.update', ['task' => $task]) }}" method="POST">
-        @csrf
-        @method('PUT')
+    <div class="container-fluid vh-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col col-sm-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h1 class="text-center">Edit Task</h1>
 
-        <input type="text" id="title" name="title" placeholder="Title" value="{{ $task->title }}"><br><br>
-        <input type="text" id="description" name="description" value="{{ $task->description }}"><br><br>
 
-        <input type="checkbox" name="is_completed" value="1" {{ $task->is_completed ? 'checked' : '' }}>
-        <label class="form-check-label" for="is_completed">Completed</label><br><br>
+                        <form action="{{ route('task.update', ['task' => $task]) }}" method="POST">
+                            @csrf
+                            @method('PUT')
 
-        <input type="submit" value="Update Task">
-    </form>
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <input type="text" id="title" name="title" placeholder="Title" value="{{ $task->title }}" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <input type="text" id="description" name="description" value="{{ $task->description }}" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <input type="checkbox" class="form-checkbox" name="is_completed" value="1" {{ $task->is_completed ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="is_completed">Completed</label>
+                                </div>
+                            </div>
+
+                            <input type="submit" class="btn btn-dark w-100" value="Update Task">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
